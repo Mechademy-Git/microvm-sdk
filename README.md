@@ -58,8 +58,10 @@ openapi-python-client generate \
 Or use the update command:
 
 ```bash
-openapi-python-client update \
+rm -rf python
+openapi-python-client generate \
   --path ../microvm/api/openapi.yaml \
+  --output-path ./python \
   --config openapi-config.yaml
 ```
 
