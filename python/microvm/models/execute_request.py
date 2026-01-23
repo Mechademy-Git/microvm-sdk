@@ -1,5 +1,5 @@
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar, Union
+from typing import TYPE_CHECKING, Any, TypeVar, Union, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -7,7 +7,6 @@ from attrs import field as _attrs_field
 from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
-    from ..models.execute_request_args_item import ExecuteRequestArgsItem
     from ..models.execute_request_kwargs import ExecuteRequestKwargs
 
 
@@ -21,8 +20,7 @@ class ExecuteRequest:
         code (str): Python code containing the function to execute Example: def add(a, b):
                 return a + b.
         function_name (str): Name of the function to call from the provided code Example: add.
-        args (Union[Unset, list['ExecuteRequestArgsItem']]): Positional arguments to pass to the function Example: [1,
-            2].
+        args (Union[Unset, list[Any]]): Positional arguments to pass to the function Example: [1, 2].
         kwargs (Union[Unset, ExecuteRequestKwargs]): Keyword arguments to pass to the function Example: {'param1':
             'value'}.
         timeout (Union[Unset, int]): Maximum execution time in seconds Default: 30. Example: 30.
@@ -32,7 +30,7 @@ class ExecuteRequest:
 
     code: str
     function_name: str
-    args: Union[Unset, list["ExecuteRequestArgsItem"]] = UNSET
+    args: Union[Unset, list[Any]] = UNSET
     kwargs: Union[Unset, "ExecuteRequestKwargs"] = UNSET
     timeout: Union[Unset, int] = 30
     memory_mb: Union[Unset, int] = 512
@@ -43,12 +41,9 @@ class ExecuteRequest:
 
         function_name = self.function_name
 
-        args: Union[Unset, list[dict[str, Any]]] = UNSET
+        args: Union[Unset, list[Any]] = UNSET
         if not isinstance(self.args, Unset):
-            args = []
-            for args_item_data in self.args:
-                args_item = args_item_data.to_dict()
-                args.append(args_item)
+            args = self.args
 
         kwargs: Union[Unset, dict[str, Any]] = UNSET
         if not isinstance(self.kwargs, Unset):
@@ -79,7 +74,6 @@ class ExecuteRequest:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.execute_request_args_item import ExecuteRequestArgsItem
         from ..models.execute_request_kwargs import ExecuteRequestKwargs
 
         d = dict(src_dict)
@@ -87,12 +81,7 @@ class ExecuteRequest:
 
         function_name = d.pop("function_name")
 
-        args = []
-        _args = d.pop("args", UNSET)
-        for args_item_data in _args or []:
-            args_item = ExecuteRequestArgsItem.from_dict(args_item_data)
-
-            args.append(args_item)
+        args = cast(list[Any], d.pop("args", UNSET))
 
         _kwargs = d.pop("kwargs", UNSET)
         kwargs: Union[Unset, ExecuteRequestKwargs]
