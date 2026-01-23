@@ -46,18 +46,6 @@ When the OpenAPI spec changes, regenerate:
 
 ```bash
 # Remove old generated code (keeps your customizations in git)
-rm -rf python/microvm
-
-# Regenerate
-openapi-python-client generate \
-  --path ../microvm/api/openapi.yaml \
-  --output-path ./python \
-  --config openapi-config.yaml
-```
-
-Or use the update command:
-
-```bash
 rm -rf python
 openapi-python-client generate \
   --path ../microvm/api/openapi.yaml \
@@ -73,23 +61,23 @@ Install directly from the GitHub repository:
 
 ```bash
 # Latest from main branch
-pip install git+https://github.com/mechademy/microvm-sdk.git#subdirectory=python
+pip install git+https://github.com/Mechademy-Git/microvm-sdk.git#subdirectory=python
 
 # Specific branch
-pip install git+https://github.com/mechademy/microvm-sdk.git@develop#subdirectory=python
+pip install git+https://github.com/Mechademy-Git/microvm-sdk.git@develop#subdirectory=python
 
 # Specific commit
-pip install git+https://github.com/mechademy/microvm-sdk.git@abc1234#subdirectory=python
+pip install git+https://github.com/Mechademy-Git/microvm-sdk.git@abc1234#subdirectory=python
 
 # Specific tag/version
-pip install git+https://github.com/mechademy/microvm-sdk.git@v1.0.0#subdirectory=python
+pip install git+https://github.com/Mechademy-Git/microvm-sdk.git@v1.0.0#subdirectory=python
 ```
 
 ### In requirements.txt
 
 ```txt
 # requirements.txt
-microvm-sdk @ git+https://github.com/mechademy/microvm-sdk.git#subdirectory=python
+microvm-sdk @ git+https://github.com/Mechademy-Git/microvm-sdk.git#subdirectory=python
 ```
 
 ### In pyproject.toml
@@ -97,14 +85,14 @@ microvm-sdk @ git+https://github.com/mechademy/microvm-sdk.git#subdirectory=pyth
 ```toml
 [project]
 dependencies = [
-    "microvm-sdk @ git+https://github.com/mechademy/microvm-sdk.git#subdirectory=python"
+    "microvm-sdk @ git+https://github.com/Mechademy-Git/microvm-sdk.git#subdirectory=python"
 ]
 ```
 
 ### With uv
 
 ```bash
-uv pip install "microvm-sdk @ git+https://github.com/mechademy/microvm-sdk.git#subdirectory=python"
+uv pip install "microvm-sdk @ git+https://github.com/Mechademy-Git/microvm-sdk.git#subdirectory=python"
 ```
 
 ### From Local Path (Development)
@@ -132,7 +120,7 @@ from microvm import Client
 
 # Initialize client
 client = Client(
-    base_url="https://api.mechademy.com/microvm/v1",
+    base_url="<micro_vm_base_url>",
     headers={"X-API-Key": "your-api-key"}
 )
 
@@ -199,10 +187,10 @@ In services using the SDK:
 
 ```bash
 # Update to latest
-pip install --upgrade git+https://github.com/mechademy/microvm-sdk.git#subdirectory=python
+pip install --upgrade git+https://github.com/Mechademy-Git/microvm-sdk.git#subdirectory=python
 
 # Or update to specific version
-pip install git+https://github.com/mechademy/microvm-sdk.git@v1.2.0#subdirectory=python
+pip install git+https://github.com/Mechademy-Git/microvm-sdk.git@v1.2.0#subdirectory=python
 ```
 
 ## Adding Other Languages
@@ -236,7 +224,7 @@ openapi-generator-cli generate \
 Make sure you installed from the `python` subdirectory:
 
 ```bash
-pip install git+https://github.com/mechademy/microvm-sdk.git#subdirectory=python
+pip install git+https://github.com/Mechademy-Git/microvm-sdk.git#subdirectory=python
 ```
 
 ### Updates not reflected
@@ -245,7 +233,7 @@ Clear pip cache:
 
 ```bash
 pip cache purge
-pip install --force-reinstall git+https://github.com/mechademy/microvm-sdk.git#subdirectory=python
+pip install --force-reinstall git+https://github.com/Mechademy-Git/microvm-sdk.git#subdirectory=python
 ```
 
 ### Local development
@@ -264,4 +252,4 @@ pip install -e ./python
 
 ## License
 
-Internal use only - Mechademy © 2026
+MIT License - See [LICENSE](LICENSE) file for details.
